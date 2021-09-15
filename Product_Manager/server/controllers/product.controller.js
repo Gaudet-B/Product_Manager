@@ -25,3 +25,11 @@ module.exports.deleteProduct = (req, res) => {
         .then(confirmation => res.json(confirmation))
         .catch(err => res.status(400).json(err))
 }
+
+module.exports.updateProduct = (req, res) => {
+    const {id} = req.params
+    console.log(id);
+    Product.findOneAndUpdate({_id: id}, req.body)
+        .then(updatedProduct => res.json(updatedProduct))
+        .catch(err => res.status(400).json(err))
+}
